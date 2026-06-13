@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICU Night RMO — Jamal Noor Hospital | Dr. Hamid Fazal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --ink-soft: #2e2e45;
+      --gold: #c9a84c;
+      --gold-pale: #e8d5a3;
+      --cream: #f8f5ef;
+      --muted: #6b6b80;
+      --border: #d8cdb0;
+      --white: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.75;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--ink);
+      color: var(--white);
+      padding: 72px 24px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 0%, rgba(201,168,76,0.18) 0%, transparent 65%);
+    }
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin: 0 auto 28px;
+      font-weight: 300;
+    }
+    .hero-meta {
+      display: inline-flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.82rem;
+      color: var(--gold-pale);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.06em;
+      position: relative;
+    }
+    .hero-meta span::before { content: '▸ '; color: var(--gold); }
+
+    /* ── LAYOUT ── */
+    .wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── INTRO PULL-QUOTE ── */
+    .pull {
+      margin: 56px auto;
+      padding: 36px 40px;
+      background: var(--white);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 2px 16px rgba(26,26,46,0.07);
+    }
+    .pull p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.18rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+
+    /* ── SECTION HEADINGS ── */
+    .section { margin: 52px 0; }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .section p, .section li {
+      font-size: 0.97rem;
+      color: var(--ink-soft);
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* ── DUTY CARDS GRID ── */
+    .duty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .duty-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .duty-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 20px rgba(201,168,76,0.12);
+    }
+    .duty-card .icon {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .duty-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .duty-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── PROCEDURE LIST ── */
+    .proc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px 20px;
+      margin-top: 18px;
+    }
+    .proc-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .proc-list li::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 0.55rem;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    /* ── COVID HIGHLIGHT BAND ── */
+    .covid-band {
+      background: var(--ink);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 40px 40px;
+      margin: 52px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .covid-band::after {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.08);
+    }
+    .covid-band .section-label { margin-bottom: 8px; }
+    .covid-band h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      color: var(--gold-pale);
+      margin-bottom: 16px;
+    }
+    .covid-band p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      max-width: 680px;
+    }
+
+    /* ── SKILL TAGS ── */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .tag {
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .tag:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+
+    /* ── CLOSING QUOTE ── */
+    .closing {
+      text-align: center;
+      padding: 56px 24px;
+      border-top: 1px solid var(--border);
+      margin-top: 64px;
+    }
+    .closing blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--ink-soft);
+      max-width: 600px;
+      margin: 0 auto 16px;
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .closing cite {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-style: normal;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── PORTFOLIO NAV ── */
+    .portfolio-nav {
+      background: var(--ink);
+      padding: 56px 24px;
+      text-align: center;
+    }
+    .portfolio-nav .nav-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .portfolio-nav h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .portfolio-nav p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 32px;
+    }
+    .pill-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .pill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      letter-spacing: 0.02em;
+    }
+    .pill-link.gold-fill {
+      background: var(--gold);
+      color: var(--ink);
+      border: 2px solid var(--gold);
+    }
+    .pill-link.gold-fill:hover {
+      background: var(--gold-pale);
+      border-color: var(--gold-pale);
+      transform: translateY(-2px);
+    }
+    .pill-link.outline {
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .pill-link.outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(0,0,0,0.35);
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .pull { padding: 24px 22px; }
+      .covid-band { padding: 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-eyebrow">Professional Journey · Chapter III</div>
+  <h1>Two Years at the<br/><span>Edge of Life</span></h1>
+  <p class="hero-sub">Night ICU duty through Karachi's most demanding clinical era — and through a global pandemic</p>
+  <div class="hero-meta">
+    <span>Jamal Noor Hospital, Karachi</span>
+    <span>Night RMO · ICU</span>
+    <span>July 2019 – August 2021</span>
+  </div>
+</header>
+
+<main class="wrapper">
+
+  <!-- INTRO -->
+  <div class="pull">
+    <p>
+      Intensive care is medicine without margins. Every night, I walked into a unit where every patient had already crossed a threshold — past the ward, past the ER, into the territory where physiology is managed hour by hour and the difference between stability and catastrophe is measured in minutes. Two years of nights in that space shaped the way I think about clinical decisions, risk, and the weight of being the doctor in the room.
+    </p>
+  </div>
+
+  <!-- ADMISSION & TRIAGE -->
+  <div class="section">
+    <div class="section-label">Core Responsibilities</div>
+    <h2>Admissions, Triage & Initial Stabilisation</h2>
+    <p>Every shift began with receiving critically ill patients from the emergency department, referring units, or direct transfers from other hospitals. I conducted rapid primary and secondary assessments, established working diagnoses, and initiated time-sensitive resuscitation protocols before specialist review. For patients arriving in extremis — septic shock, acute pulmonary oedema, hypertensive emergencies, or multi-organ dysfunction — the night RMO is the first stabilising force. I ordered and interpreted urgent investigations, arranged bedside imaging, and co-ordinated with lab, pharmacy, and nursing staff to compress the time from arrival to definitive intervention.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- DUTY CARDS -->
+  <div class="section">
+    <div class="section-label">Night-to-Night Clinical Work</div>
+    <h2>What the Nights Actually Looked Like</h2>
+    <div class="duty-grid">
+
+      <div class="duty-card">
+        <span class="icon">🫁</span>
+        <h3>Ventilator Management</h3>
+        <p>Initiating and titrating mechanical ventilation; adjusting modes (AC, SIMV, PSV), PEEP, FiO₂, and tidal volumes; interpreting ventilator waveforms; managing ventilator alarms and patient-ventilator dyssynchrony through the night.</p>
+      </div>
+
+      <div class="duty-card">
+        <span class="icon">💉</span>
+        <h3>Vasopressor & Inotrope Titration</h3>
+        <p>Running and adjusting norepinephrine, dopamine, dobutamine, and vasopressin infusions in real time; monitoring haemodynamic response; escalating or weaning support based on MAP, lactate, and urine output trends.</p>
+      </div>
+
+      <div class="duty-card">
+        <span class="icon">🧪</span>
+        <h3>Fluid & Electrolyte Management</h3>
+        <p>Correcting critical electrolyte disturbances — dysnatraemia, hypokalaemia, hypomagnesaemia, hypophosphataemia — and managing fluid balance in oliguric or fluid-overloaded patients, including in the context of AKI and hepatic disease.</p>
+      </div>
+
+      <div class="duty-card">
+        <span class="icon">❤️</span>
+        <h3>Cardiac Monitoring & Arrhythmia Management</h3>
+        <p>Continuous ECG interpretation; recognition and management of life-threatening arrhythmias including VT, VF, complete heart block, and AF with rapid ventricular response; co-ordinating cardioversion and initiating anti-arrhythmic therapy.</p>
+      </div>
+
+      <div class="duty-card">
+        <span class="icon">🧠</span>
+        <h3>Altered Consciousness & Neuro Emergencies</h3>
+        <p>Assessment of GCS, pupillary reflexes, and focal deficits; managing hepatic encephalopathy, hypoglycaemic coma, hypertensive encephalopathy, and post-ictal states; liaising with neurology for stroke and raised ICP scenarios.</p>
+      </div>
+
+      <div class="duty-card">
+        <span class="icon">🩸</span>
+        <h3>Sepsis Protocols & Antimicrobial Stewardship</h3>
+        <p>Implementing sepsis bundles within the first hour — blood cultures, broad-spectrum antibiotics, IV fluids, lactate measurement; reviewing culture results, de-escalating antibiotics, and liaising with microbiology on resistant organisms.</p>
+      </div>
+
+      <div class="duty-card">
+        <span class="icon">🫀</span>
+        <h3>Cardiopulmonary Resuscitation</h3>
+        <p>Leading ACLS-based resuscitation teams during cardiac arrests; managing airways, defibrillation, adrenaline dosing, and post-ROSC care; debriefing teams and communicating with families after critical events.</p>
+      </div>
+
+      <div class="duty-card">
+        <span class="icon">📋</span>
+        <h3>Overnight Documentation & Handover</h3>
+        <p>Maintaining accurate ICU charts, drug infusion records, fluid balances, ventilator logs, and procedure notes throughout each shift; delivering structured clinical handovers to the morning team with a clear picture of every patient's overnight trajectory.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- PROCEDURES -->
+  <div class="section">
+    <div class="section-label">Procedural Competencies</div>
+    <h2>Bedside Procedures Performed in the Unit</h2>
+    <p>In a resource-constrained ICU environment where specialist response at 2 a.m. is not always immediate, the night RMO is expected to be technically capable. Over two years of night shifts, I performed and assisted in the following procedures:</p>
+    <ul class="proc-list">
+      <li>Endotracheal intubation (RSI)</li>
+      <li>Bag-mask ventilation</li>
+      <li>Central venous catheter insertion</li>
+      <li>Arterial line placement</li>
+      <li>Nasogastric tube insertion</li>
+      <li>Urinary catheterisation</li>
+      <li>IV access (peripheral & emergency)</li>
+      <li>ABG sampling & interpretation</li>
+      <li>Chest drain assistance</li>
+      <li>12-lead ECG acquisition & reading</li>
+      <li>Defibrillation & cardioversion</li>
+      <li>Transcutaneous pacing (emergency)</li>
+      <li>Intraosseous access (emergency)</li>
+      <li>Point-of-care glucose & ketone testing</li>
+      <li>Wound care & dressing in ICU context</li>
+      <li>Lumbar puncture assistance</li>
+    </ul>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- COVID BAND -->
+  <div class="covid-band">
+    <div class="section-label">2020 – 2021</div>
+    <h2>Serving Through the COVID-19 Pandemic</h2>
+    <p>
+      My tenure at Jamal Noor spanned the entire first wave, the surge months, and the vaccine-era transition of the COVID-19 pandemic in Karachi. In an ICU during that period, every clinical challenge was amplified: critically hypoxic patients requiring prone positioning and high-flow oxygen, cytokine storm management with corticosteroids and anticoagulation, cohorting infected patients, working under full PPE for entire night shifts, and making difficult triage decisions when beds were scarce. I witnessed and participated in the full spectrum of critical COVID-19 care — from initial stabilisation to end-of-life conversations with families who could not be present at the bedside. It was the hardest clinical experience of my career, and the most defining.
+    </p>
+  </div>
+
+  <!-- SKILLS SECTION -->
+  <div class="section">
+    <div class="section-label">Competencies Developed</div>
+    <h2>Clinical & Professional Skills</h2>
+    <p>Two years of uninterrupted night ICU work built a clinical profile that no classroom or short posting can replicate:</p>
+    <div class="tag-cloud">
+      <span class="tag">Critical Care Medicine</span>
+      <span class="tag">Mechanical Ventilation</span>
+      <span class="tag">Haemodynamic Monitoring</span>
+      <span class="tag">Vasopressor Management</span>
+      <span class="tag">Sepsis Management</span>
+      <span class="tag">ACLS / Resuscitation</span>
+      <span class="tag">Respiratory Failure</span>
+      <span class="tag">AKI Management</span>
+      <span class="tag">Acid-Base Interpretation</span>
+      <span class="tag">Arrhythmia Recognition</span>
+      <span class="tag">Electrolyte Correction</span>
+      <span class="tag">COVID-19 Critical Care</span>
+      <span class="tag">Prone Positioning</span>
+      <span class="tag">Anticoagulation Therapy</span>
+      <span class="tag">High-flow Oxygen Therapy</span>
+      <span class="tag">End-of-life Communication</span>
+      <span class="tag">Night Shift Decision-Making</span>
+      <span class="tag">Multi-disciplinary Co-ordination</span>
+      <span class="tag">PPE-compliant Patient Care</span>
+      <span class="tag">ICU Documentation</span>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <blockquote>
+      "The ICU teaches you that medicine is not about what you know — it is about what you can do with what you know, at 3 in the morning, when you are the only doctor in the room."
+    </blockquote>
+    <cite>— Dr. Hamid Fazal, reflecting on two years of night ICU duty</cite>
+  </div>
+
+</main>
+
+<!-- PORTFOLIO NAVIGATION -->
+<div class="portfolio-nav">
+  <p class="nav-eyebrow">Professional Journey · Explore Other Chapters</p>
+  <h3>Continue Reading the Story</h3>
+  <p>Each chapter is part of a broader career built across specialties, institutions, and decades of service.</p>
+  <div class="pill-links">
+    <a href="https://hamidfazal.github.io/" class="pill-link gold-fill">← Back to Portfolio</a>
+    <a href="https://hamidfazal.github.io/Karwan-e-Hayat/" class="pill-link outline">Karwan-e-Hayat →</a>
+    <a href="https://hamidfazal.github.io/SSWAB-Trust-Kidney-Care/" class="pill-link outline">SSWAB Kidney Care →</a>
+    <a href="https://hamidfazal.github.io/community-outreach-/" class="pill-link outline">Community Outreach →</a>
+    <a href="https://hamidfazal.github.io/IBS/" class="pill-link outline">IBS Chapter →</a>
+    <a href="https://hamidfazal.github.io/new-dashboard" class="pill-link outline">Clinical Reference Library →</a>
+  </div>
+</div>
+
+<footer>
+  <p>Dr. Hamid Fazal · MBBS · ECFMG Certified · USMLE Steps 1–2–3 &nbsp;|&nbsp; <a href="https://hamidfazal.github.io">hamidfazal.github.io</a></p>
+</footer>
+
+</body>
+</html>
+
